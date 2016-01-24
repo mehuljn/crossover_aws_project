@@ -5,6 +5,7 @@ MYBB_DATABASE_HOST=$2
 MYBB_DATABASE_PORT=$3
 MYBB_DATABASE_USER=$4
 MYBB_DATABASE_PASS=$5
+MYBB_EXTERNAL_DNS=$6
 
 WWWROOT="/var/www/html"
 
@@ -14,7 +15,9 @@ sudo mv MYBB/* $WWWROOT
 
 #Lets Reconfigure Settings.conf 
 
-sudo sed -e "s/MYBB_ADMINEMAIL/${MYBB_ADMINEMAIL}/g" "MYBBCONF/settings.php" > "$WWWROOT/inc/settings.php"
+sudo sed -e "s/MYBB_ADMINEMAIL/${MYBB_ADMINEMAIL}/g" \
+     	 -e "s/MYBB_EXTERNAL_DNS/${MYBB_EXTERNAL_DNS}/g" \
+	    "MYBBCONF/settings.php" > "$WWWROOT/inc/settings.php"
 
 sudo sed -e "s/MYBB_DATABASE_HOST/${MYBB_DATABASE_HOST}/g" \
 	 -e "s/MYBB_DATABASE_PORT/${MYBB_DATABASE_PORT}/g" \
