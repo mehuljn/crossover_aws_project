@@ -1,0 +1,8 @@
+#!/bin/bash
+
+bash 01_setupnode.sh
+bash 02_extract_MYBB.sh
+sudo mysql_secure_installation
+bash 03_ready_db.sh localhost 3306 root dbroot mybbuser password
+bash 04_config_mybb.sh root@localhost localhost 3306 mybbuser password
+sudo service httpd start
